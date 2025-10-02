@@ -200,22 +200,54 @@ section.special-events .container {
     padding: 0 20px;
 }
 
+.special-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
 .special-event-card {
     background: var(--white);
     border: 2px solid var(--secondary-color);
     border-radius: 10px;
-    padding: 2.5rem;
+    padding: 2rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
     text-align: left;
 }
 
 .special-event-card h3 {
     color: var(--primary-color);
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.event-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.event-icon.steak {
+    background: linear-gradient(135deg, var(--accent-color), #a52a2a);
+}
+
+.event-icon.football {
+    background: linear-gradient(135deg, var(--primary-color), #2a4d7a);
+}
+
+.event-icon.running {
+    background: linear-gradient(135deg, var(--secondary-color), #ffed4e);
 }
 
 .event-banner {
@@ -370,6 +402,13 @@ section.special-events .container {
 .contact-options .btn-secondary:hover {
     background: var(--primary-color);
     color: var(--white);
+}
+
+.hall-footnote {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 1.5rem;
 }
 
 .contact-content {
