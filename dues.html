@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Membership Dues - Knights of Columbus Council 626</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dues-hero {
+            background: linear-gradient(135deg, var(--primary-color), #2a4d7a);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .dues-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .dues-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .dues-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        .dues-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dues-intro h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .dues-intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .payment-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .payment-amount {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .payment-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .payment-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            min-height: 3em;
+        }
+
+        .payment-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-color);
+        }
+
+        .payment-btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .secure-notice {
+            background: #f0f8ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            text-align: center;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .secure-notice h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .secure-notice p {
+            color: #666;
+            margin: 0;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .back-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .dues-hero h1 {
+                font-size: 2rem;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Knights of Columbus</h1>
+                <h2>Council 626 - Norwalk, Ohio</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="dues.html">Pay Dues</a></li>
+                    <li><a href="index.html#hall-rental">Hall Rental</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dues-hero">
+        <div class="container">
+            <h1>Pay Your Membership Dues</h1>
+            <p>Quick and secure online payment for Knights of Columbus Council 626 members</p>
+        </div>
+    </section>
+
+    <div class="dues-container">
+        <div class="dues-intro">
+            <h2>Select Your Membership Type</h2>
+            <p>Choose the appropriate payment option below based on your membership degree and dues owed. All payments are processed securely through Stripe.</p>
+        </div>
+
+        <div class="payment-options">
+            <div class="payment-card">
+                <div class="payment-amount">$30</div>
+                <div class="payment-title">Regular Council Dues</div>
+                <div class="payment-description">For 1st, 2nd, and 3rd degree members only</div>
+                <a href="https://buy.stripe.com/00geV44ljflkdcAaEE" class="payment-btn" target="_blank">Pay $30 Now</a>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-amount">$45</div>
+                <div class="payment-title">Combined Dues</div>
+                <div class="payment-description">Regular council dues plus 4th degree dues</div>
+                <a href="https://buy.stripe.com/fZe00aaJHflk2xW6oq" class="payment-btn" target="_blank">Pay $45 Now</a>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-amount">$15</div>
+                <div class="payment-title">4th Degree / Honorary</div>
+                <div class="payment-description">4th degree only OR Council Honorary dues</div>
+                <a href="https://buy.stripe.com/6oEeV4aJHflka0odQT" class="payment-btn" target="_blank">Pay $15 Now</a>
+            </div>
+        </div>
+
+        <div class="secure-notice">
+            <h3>🔒 Secure Payment Processing</h3>
+            <p>All payments are processed securely through Stripe. Your payment information is encrypted and never stored on our servers.</p>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">← Return to Main Site</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Knights of Columbus Council 626</h3>
+                    <p>254 West Main Street, Norwalk, OH 44857</p>
+                    <p>Phone: <a href="tel:4196770706">(419) 677-0706</a> | Email: <a href="mailto:kofc626@gmail.com">kofc626@gmail.com</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                        <li><a href="dues.html">Pay Dues</a></li>
+                        <li><a href="index.html#hall-rental">Hall Rental</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Knights of Columbus Council 626. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            const footerYear = document.querySelector('.footer-bottom p');
+            if (footerYear) {
+                footerYear.innerHTML = `&copy; ${currentYear} Knights of Columbus Council 626. All rights reserved.`;
+            }
+        });
+    </script>
+</body>
+</html>
