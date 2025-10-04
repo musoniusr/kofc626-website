@@ -213,6 +213,23 @@ section.special-events .container {
     padding: 2rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.sold-out-ribbon {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background: #dc3545;
+    color: white;
+    padding: 8px 40px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transform: rotate(45deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
 }
 
 .special-event-card h3 {
