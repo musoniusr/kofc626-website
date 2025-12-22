@@ -267,6 +267,23 @@ section.special-events .container {
     background: linear-gradient(135deg, var(--secondary-color), #ffed4e);
 }
 
+.event-icon.food {
+    background: linear-gradient(135deg, #228B22, #32CD32);
+}
+
+.event-image {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.event-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 .event-banner {
     background: var(--light-bg);
     padding: 1.5rem;
