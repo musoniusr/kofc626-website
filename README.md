@@ -53,7 +53,24 @@ computer.
 
 ## Everyday workflow: making a change
 
-### 1. Open the project folder and edit files
+### 1. Pull the latest changes first
+
+**Before you start editing**, always get the latest version — someone else may
+have updated the site since you last opened this folder. Skipping this step is
+the most common way to accidentally undo someone else's edit.
+
+**Using GitHub Desktop:** open it and click **Fetch origin** (it becomes
+**Pull origin** if there's anything new) at the top of the window.
+
+**Using the command line**, from inside the project folder:
+```
+git pull
+```
+
+Do this every single time, even if you *just* pushed a change yourself
+minutes ago — someone else may have pushed in between.
+
+### 2. Open the project folder and edit files
 
 - **`index.html`** — the main page (About, Special Events, Regular Events, Hall
   Rental, Contact). This is where most updates happen — new event dates, prices,
@@ -98,14 +115,15 @@ blocks, paste it, and change the text, image filename, date/time/cost, and link.
 To remove an event, delete its whole block (from `<div class="special-event-card">`
 down to its matching closing `</div>`).
 
-### 2. Preview your changes before publishing
+### 3. Preview your changes before publishing
 
 Just double-click `index.html` in the project folder — it opens in your browser
 and shows exactly what visitors will see. Refresh the page after each edit.
 Nothing is public yet at this point — you're only looking at the file on your
-own computer.
+own computer. Check things over carefully here — this is the "testing" step,
+before anything gets pushed.
 
-### 3. Publish the change (push to GitHub)
+### 4. Publish the change (push to GitHub) — only after testing
 
 **Using GitHub Desktop:**
 1. Open GitHub Desktop — it will show your changed files automatically.
@@ -120,10 +138,14 @@ git commit -m "Update pork dinner date"
 git push
 ```
 
+If `git push` is rejected with a message about the remote having changes you
+don't have locally, someone else pushed while you were editing — run
+`git pull` again (Step 1) to merge their changes in, then `git push` again.
+
 That's it. Cloudflare picks up the push automatically and the live site updates
 within a minute or two — no further action needed.
 
-### 4. Verify it went live
+### 5. Verify it went live
 
 Open https://kofc626.com (hard-refresh with `Ctrl+Shift+R` if you don't see the
 change — browsers cache pages) or check the **Deployments** tab in the
