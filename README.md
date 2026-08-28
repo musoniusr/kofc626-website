@@ -174,11 +174,19 @@ accumulate unused images.
 **Before you've pushed:** just re-edit the file back, or in GitHub Desktop
 right-click the changed file → "Discard changes."
 
-**After you've pushed and the live site looks wrong:** go to Cloudflare
-Dashboard → Workers & Pages → `kofc626-website` → **Deployments**, find the
-last deployment that was correct, and use its **rollback / redeploy** option —
-this instantly reverts the live site to that version, no git knowledge
-needed, while you fix the underlying file at your own pace.
+**After you've pushed and the live site looks wrong — anyone with GitHub
+access can fix this, no Cloudflare login needed:** just edit the file back to
+how it was (or fix the mistake) and commit/push again, the same way you'd make
+any other change. A new push always overwrites whatever's live, so pushing a
+correction fixes the site the same way pushing the mistake broke it — usually
+within a minute or two.
+
+**If you have Cloudflare access** (currently just the council's website
+administrator): there's also a faster shortcut — Cloudflare Dashboard →
+Workers & Pages → `kofc626-website` → **Deployments**, find the last
+deployment that was correct, and use its **rollback / redeploy** option to
+instantly revert the live site to that version while the underlying file gets
+fixed at your own pace.
 
 ---
 
