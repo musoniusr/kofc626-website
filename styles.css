@@ -258,15 +258,15 @@ section.special-events .container {
 .event-icon.steak {
     background: linear-gradient(135deg, var(--accent-color), #a52a2a);
 }
-
 .event-icon.football {
     background: linear-gradient(135deg, var(--primary-color), #2a4d7a);
 }
-
-.event-icon.running {
-    background: linear-gradient(135deg, var(--secondary-color), #ffed4e);
+.event-icon.prayer {
+	background: linear-gradient(135deg, var(--accent-color), #FF0000);
 }
-
+.event-icon.running {
+    background: linear-gradient(135deg, var(--accent-color), #ffed4e);
+}
 .event-icon.food {
     background: linear-gradient(135deg, #228B22, #32CD32);
 }
