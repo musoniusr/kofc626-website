@@ -207,9 +207,47 @@ slower to load, without looking any better.
    Avoid spaces in new filenames if you can (use hyphens instead) — it keeps
    the `src="..."` references in the HTML simpler to type correctly.
 4. Put the file in the main project folder (same place as `index.html`).
-5. Reference it in the HTML: `<img src="your-file-name.webp" alt="Describe the photo">`.
+5. Reference it in the HTML:
+   `<img src="your-file-name.webp" alt="Describe the photo" loading="lazy">`.
    Always fill in `alt="..."` with a short description — it's what screen
-   readers announce and what shows up in search results.
+   readers announce and what shows up in search results. `loading="lazy"`
+   makes the browser wait to download the image until the visitor scrolls
+   near it; use it on every image except the emblems at the very top of a page.
+
+### Choosing the right file format
+
+| What it is | Use | Why |
+|---|---|---|
+| Photo or event flyer (from a camera, phone, Canva, Publisher) | **WebP** (or JPG) | Small files; flyer text stays sharp at quality 80–85 |
+| Logo or emblem with a see-through background | **PNG** | Keeps transparency and crisp edges |
+| Icons in `kofc_favicon_io/` and `assembly_favicon/` | PNG / ICO | Leave as they are |
+
+**Don't save photos or flyers as PNG.** PNG is meant for logos and simple
+graphics; for a photo or a colorful flyer it makes files 5–10 times bigger
+with no visible gain. Example from this site: an 800×436 fish dinner flyer
+saved as PNG was **799 KB**; the same flyer as WebP would be about 80 KB.
+When exporting from Canva or Publisher, choose **JPG**, then run it through
+https://squoosh.app to make a WebP.
+
+After converting, open the new file and zoom in on any small text (dates,
+prices, phone numbers) to make sure it's still easy to read. If it's fuzzy,
+raise the quality a little and try again.
+
+**Quick size check:** in File Explorer, look at the file's size before you
+add it. Over **300 KB** for one image means it still needs resizing or
+converting.
+
+### Keep originals out of the website folder
+
+Only the web-ready version belongs in this folder. Keep the full-size original
+(the camera photo, the Canva download) in your own Pictures or Documents
+folder. Everything in this folder is published to the live site and stored in
+Git forever, even after it's deleted.
+
+**Clean up when an event ends.** When you remove an event card, delete its
+image file in the same commit, unless the card is only commented out
+(`<!-- ... -->`) to reuse later. Old versions stay in Git history, so a
+deleted image can always be recovered.
 
 **A photo wider than about 1200 px must sit inside something that limits its
 width** (an `.event-image`, `.rental-image`, or `.officers-photo` block, which
