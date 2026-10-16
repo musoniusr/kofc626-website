@@ -225,7 +225,7 @@ slower to load, without looking any better.
 **Don't save photos or flyers as PNG.** PNG is meant for logos and simple
 graphics; for a photo or a colorful flyer it makes files 5–10 times bigger
 with no visible gain. Example from this site: an 800×436 fish dinner flyer
-saved as PNG was **799 KB**; the same flyer as WebP would be about 80 KB.
+saved as PNG was **799 KB**; the same flyer as WebP is **54 KB**, about 15 times smaller.
 When exporting from Canva or Publisher, choose **JPG**, then run it through
 https://squoosh.app to make a WebP.
 
