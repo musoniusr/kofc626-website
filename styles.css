@@ -373,6 +373,43 @@ section.special-events .container {
     color: var(--primary-color);
 }
 
+.assembly-list {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 1.5rem;
+}
+
+.officers {
+    background: var(--light-bg);
+}
+
+.officer-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.officer-table th,
+.officer-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.officer-table th {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.officer-table tr:last-child th,
+.officer-table tr:last-child td {
+    border-bottom: none;
+}
+
 .calendar-wrapper {
     max-width: 900px;
     margin: 0 auto;
