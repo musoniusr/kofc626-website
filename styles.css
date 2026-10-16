@@ -602,7 +602,74 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Fourth Degree Assembly 823 theme - colors taken from the 4th Degree emblem */
+body.assembly {
+    --primary-color: #0b2545;
+    --secondary-color: #fdb913;
+    --accent-color: #d6312a;
+}
+
+body.assembly header {
+    border-bottom: 4px solid var(--accent-color);
+}
+
+body.assembly .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.header-emblem {
+    height: 64px;
+    width: auto;
+}
+
+body.assembly .hero {
+    background: linear-gradient(135deg, #0b2545, #13315c 60%, #6b1d1d);
+}
+
+.hero-emblem {
+    display: block;
+    height: 220px;
+    width: auto;
+    margin: 0 auto 1.5rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+body.assembly .event-card {
+    border-left-color: var(--accent-color);
+}
+
+body.assembly section:not(.hero) h2 {
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+body.assembly section:not(.hero) h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--accent-color) 33%, var(--secondary-color) 33% 66%, var(--primary-color) 66%);
+}
+
+body.assembly .officer-table th {
+    border-left: 4px solid var(--secondary-color);
+}
+
 @media (max-width: 768px) {
+    .header-emblem {
+        height: 44px;
+    }
+
+    .hero-emblem {
+        height: 160px;
+    }
+
     header h1 {
         font-size: 1.5rem;
     }

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentYear = new Date().getFullYear();
     const footerYear = document.querySelector('.footer-bottom p');
     if (footerYear) {
-        footerYear.innerHTML = `&copy; ${currentYear} Knights of Columbus Council 626. All rights reserved.`;
+        footerYear.innerHTML = footerYear.innerHTML.replace(/\d{4}/, currentYear);
     }
 
     const observer = new IntersectionObserver((entries) => {
