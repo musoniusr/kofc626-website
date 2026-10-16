@@ -5,8 +5,8 @@
 }
 
 :root {
-    --primary-color: #1e3a5f;
-    --secondary-color: #ffd700;
+    --primary-color: #142965;
+    --secondary-color: #f6b618;
     --accent-color: #8b0000;
     --text-color: #333;
     --light-bg: #f8f8f8;
@@ -34,11 +34,21 @@ header {
     top: 0;
     z-index: 100;
     box-shadow: var(--shadow);
+    border-bottom: 4px solid var(--secondary-color);
 }
 
 .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     text-align: center;
     padding: 1rem 0;
+}
+
+.header-emblem {
+    height: 64px;
+    width: auto;
 }
 
 header h1 {
@@ -73,10 +83,18 @@ nav a:hover {
 }
 
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), #2a4d7a);
+    background: linear-gradient(135deg, var(--primary-color), #1f3d8a);
     color: var(--white);
     padding: 4rem 0;
     text-align: center;
+}
+
+.hero-emblem {
+    display: block;
+    height: 220px;
+    width: auto;
+    margin: 0 auto 1.5rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
 .hero h2 {
@@ -139,6 +157,22 @@ section h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--primary-color);
+}
+
+section:not(.hero) > .container > h2 {
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+section:not(.hero) > .container > h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
 }
 
 .about {
@@ -259,7 +293,7 @@ section.special-events .container {
     background: linear-gradient(135deg, var(--accent-color), #a52a2a);
 }
 .event-icon.football {
-    background: linear-gradient(135deg, var(--primary-color), #2a4d7a);
+    background: linear-gradient(135deg, var(--primary-color), #1f3d8a);
 }
 .event-icon.prayer {
 	background: linear-gradient(135deg, var(--accent-color), #FF0000);
@@ -655,50 +689,18 @@ body.assembly {
 }
 
 body.assembly header {
-    border-bottom: 4px solid var(--accent-color);
-}
-
-body.assembly .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.header-emblem {
-    height: 64px;
-    width: auto;
+    border-bottom-color: var(--accent-color);
 }
 
 body.assembly .hero {
     background: linear-gradient(135deg, #0b2545, #13315c 60%, #6b1d1d);
 }
 
-.hero-emblem {
-    display: block;
-    height: 220px;
-    width: auto;
-    margin: 0 auto 1.5rem;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-}
-
 body.assembly .event-card {
     border-left-color: var(--accent-color);
 }
 
-body.assembly section:not(.hero) h2 {
-    position: relative;
-    padding-bottom: 0.75rem;
-}
-
-body.assembly section:not(.hero) h2::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 80px;
-    height: 3px;
-    transform: translateX(-50%);
+body.assembly section:not(.hero) > .container > h2::after {
     background: linear-gradient(90deg, var(--accent-color) 33%, var(--secondary-color) 33% 66%, var(--primary-color) 66%);
 }
 
