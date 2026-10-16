@@ -1,6 +1,7 @@
 # KofC626.com Website
 
-The website for **Knights of Columbus Council 626** (Norwalk, Ohio).
+The website for **Knights of Columbus Council 626** (Norwalk, Ohio) and
+**Fr. Stephen Badin Fourth Degree Assembly 823**.
 
 Live site: https://kofc626.com
 GitHub repo: https://github.com/musoniusr/kofc626-website
@@ -64,22 +65,30 @@ the most common way to accidentally undo someone else's edit.
 
 **Using the command line**, from inside the project folder:
 ```
-git pull
+git pull --rebase
 ```
 
 Do this every single time, even if you *just* pushed a change yourself
 minutes ago — someone else may have pushed in between.
 
+> **More than one person edits this site.** If you already have changes you
+> haven't committed yet, **commit them first (step 4's commit, without the
+> push), then pull.** Git never overwrites committed work — when two people
+> changed different parts of a file, it combines them automatically.
+
 ### 2. Open the project folder and edit files
 
-- **`index.html`** — the main page (About, Special Events, Regular Events, Hall
-  Rental, Contact). This is where most updates happen — new event dates, prices,
-  descriptions, etc.
+- **`index.html`** — the main Council 626 page (About, officers photo, Special
+  Events, Regular Events, Calendar, Hall Rental, Contact). This is where most
+  updates happen — new event dates, prices, descriptions, etc.
+- **`assembly823.html`** — the Fourth Degree Assembly 823 page (About,
+  Meetings, Officers, Contact). It has its own look; see
+  [Site look: Council vs. Assembly](#site-look-council-vs-assembly).
 - **`dues.html`** — the "Pay Dues" page.
 - **`styles.css`** — colors, fonts, spacing, layout. Only edit this if you're
   changing the look of the site.
-- **`script.js`** — small bits of interactive behavior (menu toggle, etc.).
-  Rarely needs changes.
+- **`script.js`** — small bits of interactive behavior (smooth scrolling, cards
+  that fade in as you scroll, the footer year). Rarely needs changes.
 - Image files (`.jpg` / `.webp` / `.png`) — see [Working with images](#working-with-images-and-sizing) below.
 
 You can edit `.html` and `.css` files with any plain text editor — Notepad
@@ -117,11 +126,20 @@ down to its matching closing `</div>`).
 
 ### 3. Preview your changes before publishing
 
-Just double-click `index.html` in the project folder — it opens in your browser
-and shows exactly what visitors will see. Refresh the page after each edit.
+Just double-click `index.html` (or `assembly823.html`) in the project folder — it
+opens in your browser and shows exactly what visitors will see. Refresh the page after each edit.
 Nothing is public yet at this point — you're only looking at the file on your
 own computer. Check things over carefully here — this is the "testing" step,
 before anything gets pushed.
+
+Things worth checking every time:
+- **Make the browser window narrow** (or use a phone) as well as wide. Some
+  CSS only applies at one size, so a page can look fine on one and broken on
+  the other.
+- **No sideways scrollbar.** If the page scrolls left-to-right, something
+  (usually a big image) is wider than the page.
+- Cards fade in as you scroll to them, so a card that looks blank for a
+  split second is normal.
 
 ### 4. Publish the change (push to GitHub) — only after testing
 
@@ -135,12 +153,20 @@ before anything gets pushed.
 ```
 git add .
 git commit -m "Update pork dinner date"
+git pull --rebase
 git push
 ```
 
-If `git push` is rejected with a message about the remote having changes you
-don't have locally, someone else pushed while you were editing — run
-`git pull` again (Step 1) to merge their changes in, then `git push` again.
+The `git pull --rebase` right before pushing picks up anything someone else
+pushed while you were editing. If `git push` is still rejected ("fetch first"
+or "non-fast-forward"), someone pushed in the last few seconds — run
+`git pull --rebase` again, then `git push` again.
+
+**If Git reports a conflict** (you both changed the same lines): Git stops
+instead of overwriting anything. If you can't sort it out, run
+`git rebase --abort` to go back to where you were and ask the website
+administrator for help. **Never use `git push --force`** — it erases other
+people's changes from the live site.
 
 That's it. Cloudflare picks up the push automatically and the live site updates
 within a minute or two — no further action needed.
@@ -162,6 +188,7 @@ accidentally slow the site down, so a few rules of thumb:
 |---|---|---|---|
 | Event/card photo (`.event-image`) | pork dinner, rosary, football crazr | **900–1200 px wide** | under 200 KB |
 | Hall rental photo (`.rental-image`) | hall rental.jpg | **1000–1200 px wide** | under 250 KB |
+| Officers group photo (`.officers-photo`) | 2026-2027-officers.webp | **1200–1600 px wide** | under 150 KB |
 | Any photo, in general | — | never wider than **1600 px** | under 300 KB |
 
 Why: these images display at roughly 400–500px wide on screen, but phones and
@@ -184,10 +211,91 @@ slower to load, without looking any better.
    Always fill in `alt="..."` with a short description — it's what screen
    readers announce and what shows up in search results.
 
-**Removing an old photo:** once no `<img src="...">` in `index.html` or
-`dues.html` refers to a file anymore, you can delete that file from the folder
+**A photo wider than about 1200 px must sit inside something that limits its
+width** (an `.event-image`, `.rental-image`, or `.officers-photo` block, which
+all scale images to fit). A bare `<img>` straight from a camera or phone shows
+at full size and makes the whole page wider than the screen.
+
+**Removing an old photo:** once no `<img src="...">` in `index.html`,
+`assembly823.html`, or `dues.html` refers to a file anymore, you can delete that file from the folder
 too (right-click → delete, then commit/push as usual) so the repo doesn't
 accumulate unused images.
+
+---
+
+## Editing styles.css safely
+
+- **Put new rules above the `@media (max-width: 768px) {` line** near the
+  bottom of the file. Everything inside that block applies **only to phones**.
+  Rules pasted inside it by mistake silently do nothing on computers.
+  (This happened with the officers photo in October 2026 — the photo showed
+  at full size on desktops and pushed the whole page sideways.)
+- **Use the color variables, not color codes.** The site's colors are set
+  once at the top of the file (`--primary-color`, `--secondary-color`,
+  `--accent-color`). Write `color: var(--primary-color);` instead of `#142965`
+  so everything stays matched and each page keeps its own theme.
+- Every `{` needs a matching `}`. One missing brace can break all the rules
+  after it.
+
+---
+
+## Site look: Council vs. Assembly
+
+Both pages share `styles.css` and the same layout, but each has its own colors
+and emblem so visitors can tell them apart.
+
+| Page | Emblem file | Colors | How it's set |
+|---|---|---|---|
+| Council 626 (`index.html`, `dues.html`) | `images/kofc-emblem.png` | Emblem navy `#142965`, gold `#f6b618` | `:root` at the top of `styles.css` (the default) |
+| Assembly 823 (`assembly823.html`) | `images/4th-degree-emblem.png` | Deeper navy `#0b2545`, gold `#fdb913`, red `#d6312a` | `<body class="assembly">` + the `body.assembly` rules in `styles.css` |
+
+- Any rule starting with `body.assembly` affects only the Assembly page.
+- The Assembly page has its own browser-tab icons in `assembly_favicon/`; the
+  Council pages use `kofc_favicon_io/`.
+- **Emblem rules (Knights of Columbus brand guidelines):** don't recolor,
+  stretch, crop, or add effects to the emblems, keep the ® mark, and leave some
+  empty space around them. Change the page colors around an emblem, never the
+  emblem itself.
+- The original high-resolution logo files (EPS) aren't in this repository; the
+  website administrator has them.
+
+---
+
+## Recurring updates
+
+### Officers (new terms start July 1)
+
+Officers are listed in two places, and many Sir Knights hold offices in both:
+
+- **Council officers:** the `officer-list` under the officers photo in
+  `index.html`. Replace the photo file when a new one is taken (see
+  [Working with images](#working-with-images-and-sizing) for sizing).
+- **Assembly officers:** the `officer-table` in `assembly823.html`.
+
+Conventions:
+- Use names **exactly as on the official roster**, with middle initials:
+  *Joseph R. Lesch*, not *Joe Lesch*. When someone changes on one page, check
+  whether they're also listed on the other.
+- **Never put member numbers or start dates on the site** — it's public.
+- List officers in roster order. Assembly titles differ from Council titles
+  (e.g. the chaplain is *Faithful Friar* in the Assembly).
+
+### Meeting times
+
+Each page lists its meeting time **in two places** — update both:
+
+- `index.html`: the "3rd Degree Meetings" card under Regular Events, **and**
+  "Meeting Times" in the Contact section.
+- `assembly823.html`: the "4th Degree Meetings" card under Meetings, **and**
+  "Meeting Times" in the Contact section.
+
+As of October 2026: Council meets the 2nd Monday at 7:00 PM; the Assembly
+meets right after, usually about 8:00 PM.
+
+### Footer year
+
+`script.js` updates the © year in every page's footer automatically. Leave
+the footer text itself alone.
 
 ---
 
@@ -215,13 +323,16 @@ fixed at your own pace.
 ## Project structure
 
 ```
-index.html                  Main page (About, Events, Hall Rental, Contact)
+index.html                  Council 626 main page (About, Events, Hall Rental, Contact)
+assembly823.html            Fourth Degree Assembly 823 page
 dues.html                   Pay Dues page
-styles.css                  All site styling
-script.js                   Menu/interactive behavior
-wrangler.jsonc               Cloudflare deployment config — don't need to touch this
-kofc_favicon_io/            Site icon files — don't need to touch these
-*.jpg / *.webp / *.png      Photos used throughout the site
+styles.css                  All site styling (Council theme + Assembly overrides)
+script.js                   Smooth scrolling, fade-ins, footer year
+wrangler.jsonc              Cloudflare deployment config — don't need to touch this
+images/                     Emblems (kofc-emblem.png, 4th-degree-emblem.png)
+kofc_favicon_io/            Council browser-tab icons — don't need to touch these
+assembly_favicon/           Assembly browser-tab icons — don't need to touch these
+*.jpg / *.webp / *.png      Photos used throughout the site (main folder)
 .gitignore                  Tells git to ignore backup .zip files, etc.
 ```
 
@@ -240,3 +351,11 @@ to be, and shouldn't be, tracked by git.
 - **Domain registrar:** Namecheap (DNS is managed through Cloudflare; email
   forwarding for `@kofc626.com` addresses is still handled by Namecheap — don't
   delete the `MX` or `TXT` records in Cloudflare's DNS settings)
+
+---
+
+## Keep this README up to date
+
+When you learn something the hard way — a gotcha, a convention, a "don't do
+this" — add a line to the relevant section above, in the same commit as the
+fix. The next person editing the site will thank you.
