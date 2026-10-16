@@ -330,6 +330,16 @@ Each page lists its meeting time **in two places** — update both:
 As of October 2026: Council meets the 2nd Monday at 7:00 PM; the Assembly
 meets right after, usually about 8:00 PM.
 
+### Menus and footer links
+
+Each page has its own copy of the top menu (`<nav>`) and the footer's
+"Quick Links". **When you add, rename, or remove a section or page, update
+the menu and Quick Links on every Council page** (`index.html` and
+`dues.html`), plus the Council link on `assembly823.html` if needed.
+On `dues.html` the links point back to the home page, so they start with
+`index.html#` (e.g. `index.html#calendar`); on `index.html` they're just
+`#calendar`. (The Dues page menu once went a year without being updated.)
+
 ### Footer year
 
 `script.js` updates the © year in every page's footer automatically. Leave
